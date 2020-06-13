@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+    <h2>Flax-Simulator</h2>
+
+    <p>Lets see if it is a good idea to buy a Flax Scratch ticket.</p>
+
+    <script>
+
+    function getFlax() {
+        random = Math.floor(Math.random() * Math.floor(122694679850400000));
+
+        if (random < 27265484411200000) {
+            res = 25;
+        } else if (random < 31355307072880000) {
+            res = 50;
+        } else if (random < 33965832176080000) {
+            res = 100;
+        } else if (random < 34492418784880000) {
+            res = 125;
+        } else if (random < 34765073628992000) {
+            res = 150;
+        } else if (random < 35011944212192000) {
+            res = 250;
+        } else if (random < 35080107923220000) {
+            res = 500;
+        } else if (random < 35119294981620000) {
+            res = 1000;
+        } else if (random < 35160193208236800) {
+            res = 10000;
+        } else if (random < 35160278412875585) {
+            res = 100000;
+        } else if (random < 35160482904008669) {
+            res = 1000000;
+        } else {
+            res = 0;
+        }
+
+        return res;
+    }
+
+    function sleep(ms) {
+      return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
+    async function startSpending() {
+        var dict = {
+            0: 0,
+            25: 0,
+            50: 0,
+            100: 0,
+            125: 0,
+            150: 0,
+            250: 0,
+            500: 0,
+            1000: 0,
+            10000: 0,
+            100000: 0,
+            1000000: 0
+        };
+
+
+        result = -1;
+        i = 1;
+        price = 25;
+        spent = 0;
+        won = 0;
+        Balance = 0;
+        BalancePercent = 0;
+        
+        do {
+            spent = i * price;
+            result = getFlax();
+            won += result;
+            balance = won - spent; 
+            BalancePercent = parseInt((balance / spent) * 100);
+            dict[result]++;
+            i++;
+            document.getElementById(result.toString()).innerHTML = dict[result];
+            document.getElementById('spent').innerHTML = spent;
+            document.getElementById('won').innerHTML = won;
+            document.getElementById('balance').innerHTML = balance;
+            document.getElementById('balancepercent').innerHTML = BalancePercent;
+            document.getElementById('tickets').innerHTML = i;
+            await sleep(10);
+        } while (result != 1000000)
+
+
+    }
+    </script>
+
+    <table>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr>
+        <tr>
+            <td>Tickets Bought</td>
+            <td id='tickets'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>No Price</td>
+            <td id='0'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>25 kr</td>
+            <td id='25'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>50 kr</td>
+            <td id='50'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>100 kr</td>
+            <td id='100'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>125 kr</td>
+            <td id='125'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>150 kr</td>
+            <td id='150'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>250 kr</td>
+            <td id='250'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>500 kr</td>
+            <td id='500'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1000 kr</td>
+            <td id='1000'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>10 000 kr</td>
+            <td id='10000'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>100 000 kr</td>
+            <td id='100000'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>1 000 000 kr</td>
+            <td id='1000000'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Total Spent</td>
+            <td id='spent'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Total Won</td>
+            <td id='won'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Balance</td>
+            <td id='balance'>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>Balance %</td>
+            <td id='balancepercent'>&nbsp;</td>
+        </tr>
+    </table>
+    <button onclick="startSpending()">Start Winning!</button>
+</body>
+</html>
