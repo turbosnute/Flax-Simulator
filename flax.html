@@ -1,6 +1,6 @@
+
 <!DOCTYPE html>
-<html>
-<head>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
     <style>
         .row :after {
             content: "";
@@ -99,7 +99,12 @@
             won = 0;
             Balance = 0;
             BalancePercent = 0;
-            
+            interval = 100;
+
+            for (var key in dict) {         
+                document.getElementById(key).innerHTML = 0;
+            }
+
             nok = new Intl.NumberFormat('no-NB', { style: 'currency', currency: 'NOK' })
             do {
                 spent = i * price;
@@ -115,95 +120,95 @@
                 document.getElementById('balance').innerHTML = nok.format(balance);
                 document.getElementById('balancepercent').innerHTML = BalancePercent;
                 document.getElementById('tickets').innerHTML = i;
-                await sleep(100);
+                await sleep(interval);
             } while (result != 1000000)
         }
 
     </script>
 
-    <div class='row'>
-        <div class='column' id='content'>
+    <div class="row">
+        <div class="column" id="content">
             <h1>Flax-Simulator</h1>
 
-            <p>Lets see if it is a good idea to buy a Flax Scratch ticket.</p>
+            <p>Lets see if it is a good idea to buy a Flax lottery ticket.</p>
             <table>
-                <tr>
+                <tbody><tr>
                     <th>&nbsp;</th>
                     <th>&nbsp;</th>
                 </tr>
                 <tr>
                     <td>Tickets Bought</td>
-                    <td id='tickets'>&nbsp;</td>
+                    <td id="tickets">202</td>
                 </tr>
                 <tr>
                     <td>No Price</td>
-                    <td id='0'>&nbsp;</td>
+                    <td id="0">148</td>
                 </tr>
                 <tr>
                     <td>25 kr</td>
-                    <td id='25'>&nbsp;</td>
+                    <td id="25">41</td>
                 </tr>
                 <tr>
                     <td>50 kr</td>
-                    <td id='50'>&nbsp;</td>
+                    <td id="50">5</td>
                 </tr>
                 <tr>
                     <td>100 kr</td>
-                    <td id='100'>&nbsp;</td>
+                    <td id="100">5</td>
                 </tr>
                 <tr>
                     <td>125 kr</td>
-                    <td id='125'>&nbsp;</td>
+                    <td id="125">1</td>
                 </tr>
                 <tr>
                     <td>150 kr</td>
-                    <td id='150'>&nbsp;</td>
+                    <td id="150">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>250 kr</td>
-                    <td id='250'>&nbsp;</td>
+                    <td id="250">1</td>
                 </tr>
                 <tr>
                     <td>500 kr</td>
-                    <td id='500'>&nbsp;</td>
+                    <td id="500">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>1 000 kr</td>
-                    <td id='1000'>&nbsp;</td>
+                    <td id="1000">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>10 000 kr</td>
-                    <td id='10000'>&nbsp;</td>
+                    <td id="10000">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>100 000 kr</td>
-                    <td id='100000'>&nbsp;</td>
+                    <td id="100000">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>1 000 000 kr</td>
-                    <td id='1000000'>&nbsp;</td>
+                    <td id="1000000">&nbsp;</td>
                 </tr>
                 <tr>
                     <td>Total Spent</td>
-                    <td id='spent'>&nbsp;</td>
+                    <td id="spent">kr&nbsp;5&nbsp;025,00</td>
                 </tr>
                 <tr>
                     <td>Total Won</td>
-                    <td id='won'>&nbsp;</td>
+                    <td id="won">kr&nbsp;2&nbsp;150,00</td>
                 </tr>
                 <tr>
                     <td>Balance</td>
-                    <td id='balance'>&nbsp;</td>
+                    <td id="balance">&#8722;kr&nbsp;2&nbsp;875,00</td>
                 </tr>
                 <tr>
                     <td>Balance %</td>
-                    <td id='balancepercent'>&nbsp;</td>
+                    <td id="balancepercent">-57</td>
                 </tr>
-            </table>
+            </tbody></table>
             <button onclick="startSpending()">Start Winning!</button>
         </div>
-        <div class='column' id='pic'>&nbsp;</div>
+        <div class="column" id="pic">&nbsp;</div>
     </div>
 
-</body>
-</html>
+
+</body></html>
