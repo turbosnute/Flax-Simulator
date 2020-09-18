@@ -70,6 +70,19 @@
     
             return res;
         }
+
+        function walk() {
+            interval = 100;
+        }
+
+        function bicyce() {
+            interval = 10;
+        }
+
+        function rocket() {
+            interval = 1;
+        }
+
     
         function sleep(ms) {
           return new Promise(resolve => setTimeout(resolve, ms));
@@ -206,6 +219,9 @@
                 </tr>
             </tbody></table>
             <button onclick="startSpending()">Start Winning!</button>
+            <button onclick="walk()">></button>
+            <button onclick="bicyce()">>></button>
+            <button onclick="rocket()">>>></button>
         </div>
         <div class="column" id="pic">&nbsp;</div>
     </div>
